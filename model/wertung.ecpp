@@ -1,0 +1,5 @@
+<%request include="wertung.h">
+
+std::vector<Wertung> wertungen;
+
+</%request>

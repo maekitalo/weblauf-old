@@ -1,0 +1,47 @@
+<%pre>
+
+#include "configuration.h"
+
+#include <cxxtools/json.h>
+#include <tntdb/connect.h>
+#include <tntdb/connection.h>
+#include <tntdb/statement.h>
+#include <tntdb/row.h>
+#include <tntdb/cxxtools/time.h>
+
+</%pre>
+<%include>session.ecpp</%include>
+<%args>
+unsigned wid;
+</%args>
+<%cpp>
+
+wertung = Wertung();
+
+auto& cfg = Configuration::it();
+tntdb::Connection conn = tntdb::connectCached(cfg.dburl());
+
+tntdb::Statement st = conn.prepareCached(
+    "select wet_wid, wet_name, wet_art, wet_sta_von, wet_sta_bis, wet_startzeit"
+    "  from wettkampf"
+    " where wet_vid = :vid"
+    "   and wet_wid = :wid");
+
+wettkampf.vid = veranstaltung.vid;
+
+st.set("vid", veranstaltung.vid)
+  .set("wid", wid)
+  .selectRow()
+  .get(wettkampf.wid)
+  .get(wettkampf.name)
+  .get(wettkampf.art)
+  .get(wettkampf.staVon)
+  .get(wettkampf.staBis)
+  .get(wettkampf.startzeit);
+
+log_info("wettkampf vid=" << wettkampf.vid << " wid=" << wettkampf.wid << ": " << wettkampf.name);
+
+reply.setContentType("application/json");
+reply.out() << cxxtools::Json(wettkampf);
+
+</%cpp>

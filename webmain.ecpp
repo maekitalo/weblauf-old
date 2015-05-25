@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>tntnet application weblauf</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="weblauf application">
+    <link rel="stylesheet" href="weblauf.css" type="text/css">
+    <link rel="stylesheet" href="dropdown.css" type="text/css">
+    <link rel="stylesheet" href="jquery.dataTables.min.css" type="text/css">
+    <script src="jquery-2.1.4.min.js"></script>
+    <script src="jquery.dataTables.min.js"></script>
+    <script src="weblauf.js"></script>
+    <script src="<$ request.getArg("main") $>.js"></script>
+  </head>
+  <body>
+    <div class="nav">
+        <ul id="nav">
+            <li><a href="#">Veranstaltung</a>
+                <ul>
+                    <li><a href="veranstaltung">Veranstaltung</a></li>
+                    <li><a href="wettkampf">Wettkämpfe</a></li>
+                    <li><a href="wertung">Wertungen</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Meldung</a>
+                <ul>
+                    <li><a href="teilnehmer">Teilnehmer</a></li>
+                    <li><a href="meldung">Meldung</a></li>
+                    <li><a href="ummelden">Ummelden</a></li>
+                    <li><hr></li>
+                    <li><a href="teilnehmerliste">Teilnehmerliste</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Ergebnisse</a>
+                <ul>
+                    <li><a href="#">Erfassen</a></li>
+                    <li><a href="#">Ergebnisse</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div id="content">
+       <& ("view/" + request.getArg("main")) qparam >
+    </div>
+  </body>
+</html>

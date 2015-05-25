@@ -1,0 +1,7 @@
+<%session include="veranstaltung.h" include="wettkampf.h" include="wertung.h">
+
+Veranstaltung veranstaltung;
+Wettkampf wettkampf;
+Wertung wertung;
+
+</%session>

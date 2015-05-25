@@ -1,0 +1,5 @@
+<%request include="veranstaltung.h">
+
+std::vector<Veranstaltung> veranstaltungen;
+
+</%request>

@@ -1,0 +1,31 @@
+<%include>model/wertung.ecpp</%include>
+<%include>session.ecpp</%include>
+<h1>Wertung</h1>
+
+<table class="datatable compact row-border stripe" id="wertungen">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Nr</th>
+      <th>Name</th>
+      <th>Abhängig</th>
+      <th>Urkunde</th>
+      <th>Preis</th>
+    </tr>
+  </thead>
+  <tbody>
+% for (const auto& w: wertungen) {
+    <tr>
+      <td><input type="radio" name="rid" value="<$ w.rid $>"<? wertung.rid == w.rid ? " checked"?>></td>
+      <td><$ w.rid $></td>
+      <td><$ w.name $></td>
+% log_info(w.abhaengig << " " << w.haveAbhaengig());
+      <td><$ w.abhaengig $></td>
+      <td><$ w.urkunde $></td>
+      <td><$ w.preis $></td>
+    </tr>
+% }
+  </tbody>
+</table>
+
+<a href="wettkampf">Wettkämpfe</a>

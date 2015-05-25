@@ -1,0 +1,4 @@
+<%include>model/index.ecpp</%include>
+<h1>weblauf</h1>
+
+<p>Welcome to the weblauf application.</p>
