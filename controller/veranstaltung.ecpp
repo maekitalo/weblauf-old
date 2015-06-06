@@ -1,0 +1,34 @@
+<%include>model/veranstaltung.ecpp</%include>
+<%pre>
+
+#include "configuration.h"
+#include <tntdb/connect.h>
+#include <tntdb/connection.h>
+#include <tntdb/statement.h>
+#include <tntdb/row.h>
+#include <tntdb/cxxtools/date.h>
+
+</%pre>
+<%cpp>
+
+auto& cfg = Configuration::it();
+
+tntdb::Connection conn = tntdb::connectCached(cfg.dburl());
+
+tntdb::Statement st = conn.prepareCached(
+    "select van_vid, van_datum, van_name, van_ort, van_logo"
+    "  from veranstaltung"
+    "  order by van_datum");
+
+for (auto r: st)
+{
+    veranstaltungen.resize(veranstaltungen.size() + 1);
+    auto& v = veranstaltungen.back();
+    r.get(v.vid)
+     .get(v.datum)
+     .get(v.name)
+     .get(v.ort)
+     .get(v.logo);
+}
+
+</%cpp>

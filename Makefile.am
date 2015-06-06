@@ -27,6 +27,7 @@ ecppSources = \
 	controller/veranstaltung.ecpp \
 	controller/wettkampf.ecpp \
 	controller/wertung.ecpp \
+	html/veranstaltung.ecpp \
 	json/setveranstaltung.ecpp \
 	json/setwertung.ecpp \
 	json/setwettkampf.ecpp \
@@ -38,16 +39,39 @@ ecppSources = \
 
 staticSources = \
 	resources/dropdown.css \
+	resources/images/sort_asc.png \
+	resources/images/sort_desc.png \
+	resources/images/sort_both.png \
 	resources/jquery-2.1.4.min.js \
 	resources/jquery.dataTables.min.js \
 	resources/jquery.dataTables.min.css \
+	resources/jquery-ui-1.11.4.custom/jquery-ui.js \
+	resources/jquery-ui-1.11.4.custom/jquery-ui.theme.css \
+	resources/jquery-ui-1.11.4.custom/jquery-ui.css \
+	resources/jquery-ui-1.11.4.custom/jquery-ui.structure.min.css \
+	resources/jquery-ui-1.11.4.custom/jquery-ui.structure.css \
+	resources/jquery-ui-1.11.4.custom/jquery-ui.min.js \
+	resources/jquery-ui-1.11.4.custom/images/ui-icons_ffffff_256x240.png \
+	resources/jquery-ui-1.11.4.custom/images/ui-bg_flat_10_000000_40x100.png \
+	resources/jquery-ui-1.11.4.custom/images/ui-bg_diagonals-thick_18_b81900_40x40.png \
+	resources/jquery-ui-1.11.4.custom/images/ui-bg_highlight-soft_100_eeeeee_1x100.png \
+	resources/jquery-ui-1.11.4.custom/images/ui-icons_228ef1_256x240.png \
+	resources/jquery-ui-1.11.4.custom/images/ui-bg_glass_100_f6f6f6_1x400.png \
+	resources/jquery-ui-1.11.4.custom/images/ui-bg_gloss-wave_35_f6a828_500x100.png \
+	resources/jquery-ui-1.11.4.custom/images/ui-icons_222222_256x240.png \
+	resources/jquery-ui-1.11.4.custom/images/ui-icons_ef8c08_256x240.png \
+	resources/jquery-ui-1.11.4.custom/images/ui-bg_highlight-soft_75_ffe45c_1x100.png \
+	resources/jquery-ui-1.11.4.custom/images/ui-bg_glass_100_fdf5ce_1x400.png \
+	resources/jquery-ui-1.11.4.custom/images/ui-bg_glass_65_ffffff_1x400.png \
+	resources/jquery-ui-1.11.4.custom/images/ui-bg_diagonals-thick_20_666666_40x40.png \
+	resources/jquery-ui-1.11.4.custom/images/ui-icons_ffd27a_256x240.png \
+	resources/jquery-ui-1.11.4.custom/index.html \
+	resources/jquery-ui-1.11.4.custom/jquery-ui.theme.min.css \
+	resources/jquery-ui-1.11.4.custom/jquery-ui.min.css \
 	resources/veranstaltung.js \
 	resources/weblauf.css \
 	resources/wertung.js \
 	resources/wettkampf.js \
-	resources/images/sort_asc.png \
-	resources/images/sort_desc.png \
-	resources/images/sort_both.png \
 	resources/weblauf.js
 
 weblauf_SOURCES = \

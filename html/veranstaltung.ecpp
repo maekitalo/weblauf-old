@@ -1,0 +1,34 @@
+<%include>session.ecpp</%include>
+<%args>
+bool neu;
+</%args>
+<%cpp>
+Veranstaltung v;
+if (!neu)
+{
+  v = veranstaltung;
+}
+</%cpp>
+<div id="dialog-form" title="Veranstaltung">
+    <fieldset>
+      <legend>Veranstaltung</legend>
+      <table>
+        <tr>
+          <td><label for="name">Name</label></td>
+          <td><input type="text" name="name" id="name" value="<$ v.name $>"></td>
+        </tr>
+        <tr>
+          <td><label for="ort">Ort</label></td>
+          <td><input type="text" name="ort" id="ort" value="<$ v.ort $>" class="text ui-widget-content ui-corner-all"></td>
+        </tr>
+        <tr>
+          <td><label for="ort">Datum</label></td>
+          <td><input type="text" name="datum" id="datum" value="<$ v.datum.toString("%d.%m.%Y") $>" class="text ui-widget-content ui-corner-all datum"></td>
+        </tr>
+        <tr>
+          <td><label for="ort">Logo</label></td>
+          <td><input type="text" name="logo" id="logo" value="<$ v.logo $>" class="text ui-widget-content ui-corner-all"></td>
+        </tr>
+      <table>
+    </fieldset>
+</div>

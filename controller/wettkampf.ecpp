@@ -1,0 +1,40 @@
+<%include>model/wettkampf.ecpp</%include>
+<%include>session.ecpp</%include>
+<%pre>
+
+#include "configuration.h"
+#include <tntdb/connect.h>
+#include <tntdb/connection.h>
+#include <tntdb/statement.h>
+#include <tntdb/row.h>
+#include <tntdb/cxxtools/time.h>
+
+</%pre>
+<%cpp>
+
+auto& cfg = Configuration::it();
+
+tntdb::Connection conn = tntdb::connectCached(cfg.dburl());
+
+tntdb::Statement st = conn.prepareCached(
+    "select wet_wid, wet_name, wet_art, wet_sta_von, wet_sta_bis, wet_startzeit"
+    "  from wettkampf"
+    " where wet_vid = :vid"
+    "  order by wet_wid");
+
+st.set("vid", veranstaltung.vid);
+
+for (auto r: st)
+{
+    wettkaempfe.resize(wettkaempfe.size() + 1);
+    auto& w = wettkaempfe.back();
+    w.vid = veranstaltung.vid;
+    r.get(w.wid)
+     .get(w.name)
+     .get(w.art)
+     .get(w.staVon)
+     .get(w.staBis)
+     .get(w.startzeit);
+}
+
+</%cpp>

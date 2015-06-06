@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="weblauf.css" type="text/css">
     <link rel="stylesheet" href="dropdown.css" type="text/css">
     <link rel="stylesheet" href="jquery.dataTables.min.css" type="text/css">
+    <link rel="stylesheet" href="jquery-ui-1.11.4.custom/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="jquery-ui-1.11.4.custom/jquery-ui.theme.min.css" type="text/css">
     <script src="jquery-2.1.4.min.js"></script>
+    <script src="jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
     <script src="jquery.dataTables.min.js"></script>
     <script src="weblauf.js"></script>
     <script src="<$ request.getArg("main") $>.js"></script>

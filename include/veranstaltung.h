@@ -22,6 +22,7 @@
 
 #include <string>
 #include <cxxtools/date.h>
+#include <cxxtools/clock.h>
 
 namespace cxxtools
 {
@@ -37,7 +38,8 @@ struct Veranstaltung
     std::string logo;
 
     Veranstaltung()
-        : vid(0)
+        : vid(0),
+          datum(cxxtools::Clock::getLocalTime().date())
         { }
 };
 

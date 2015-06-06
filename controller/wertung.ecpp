@@ -1,0 +1,46 @@
+<%include>model/wertung.ecpp</%include>
+<%include>session.ecpp</%include>
+<%pre>
+
+#include "configuration.h"
+#include <tntdb/connect.h>
+#include <tntdb/connection.h>
+#include <tntdb/statement.h>
+#include <tntdb/row.h>
+
+</%pre>
+<%cpp>
+
+auto& cfg = Configuration::it();
+
+tntdb::Connection conn = tntdb::connectCached(cfg.dburl());
+
+tntdb::Statement st = conn.prepareCached(
+    "select w.wer_rid, w.wer_name, a.wer_name, w.wer_urkunde, w.wer_preis"
+    "  from wertung w"
+    "  left outer join wertung a"
+    "    on a.wer_vid = w.wer_vid"
+    "   and a.wer_wid = w.wer_wid"
+    "   and a.wer_rid = w.wer_abhaengig"
+    " where w.wer_vid = :vid"
+    "   and w.wer_wid = :wid"
+    "  order by w.wer_rid");
+
+st.set("vid", wettkampf.vid)
+  .set("wid", wettkampf.wid);
+
+for (auto r: st)
+{
+    wertungen.resize(wertungen.size() + 1);
+    auto& w = wertungen.back();
+    w.vid = wettkampf.vid;
+    w.wid = wettkampf.wid;
+    r.get(w.rid)
+     .get(w.name)
+     .get(w.abhaengig)
+     .get(w.urkunde)
+     .get(w.preis);
+}
+
+</%cpp>
+

@@ -8,3 +8,6 @@ body {
     padding: 10px;
 }
 
+label {
+    width: 50px;
+}

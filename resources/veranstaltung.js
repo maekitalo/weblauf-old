@@ -20,4 +20,35 @@ $(function() {
         null  // logo
       ]
     });
+
+    var initdialog = function() {
+            $('label').css('width', '100px');
+            var dialog = $(this).dialog({
+              height: 300,
+              width: 400,
+              modal: true,
+              buttons: {
+                Speichern: function() {
+                  // TODO
+                  dialog.dialog("close");
+                  document.location.reload();
+                },
+                Abbrechen: function() {
+                  dialog.dialog("close");
+                }
+              }
+            });
+            $('.datum').datepicker();
+          };
+
+    $('#neu').click(function() {
+      $('#dialog')
+        .load('veranstaltung.html?neu=1', initdialog)
+    });
+
+    $('#bearbeiten').click(function() {
+      $('#dialog')
+        .load('veranstaltung.html', initdialog)
+    });
+
 })

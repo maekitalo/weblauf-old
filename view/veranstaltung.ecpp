@@ -27,4 +27,9 @@
   </tbody>
 </table>
 
+<div id="dialog" style="display:none"></div>
+
+<button id="bearbeiten">Bearbeiten</button>
+<button id="neu">Neu</button>
+
 <a href="wettkampf">Wettkämpfe</a>
