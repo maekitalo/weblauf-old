@@ -1,4 +1,4 @@
-AC_INIT([weblauf], [0.1], [your-email@somewhere])
+AC_INIT([weblauf2], [0.1], [tommi@lg-bsn.de])
 AM_INIT_AUTOMAKE([foreign])
 LT_INIT([disable-static])
 

@@ -1,46 +1,29 @@
-Tntnet project @PROJECT@
-===========================
+Tntnet Projekt Weblauf2
+=======================
 
-This is a tntnet web project, which follows the mvc pattern and runs as a
-standalone application.
+Weblauf ist eine Applikation zum Auswerten von Leichtathletikveranstaltungen. Es
+ist seit vielen Jahren bei der LG Bad Soden/Sulzbach/Neuenhain im Einsatz und
+wird permanent weiter entwickelt. Das bisherige Programm ist mit HTML::Mason
+entwickelt. HTML::Mason ist ein Template System, welches es erlaubt, Perl in
+HTML einzubetten. Da Perl nicht wirklich für grössere Projekte gut geeigent ist,
+ist die Idee gekommen, das ganze mit C++ neu zu implementieren. Aus dieser Idee
+heraus ist [Tntnet](http://www.tntnet.org/) entstanden.
 
-Autoconf, automake and libtool, commonly known as the autotools, is used for
-building the application.
+Da Weblauf schon damals (also im Herbst 2003) bereits recht umfangreich war und
+sich andere Anwendungsgebiete für Tntnet ergeben haben, wurde Weblauf entgegen
+der Idee nie auf Tntnet portiert.
 
-Building
---------
+Dieses vorliegende Projekt Weblauf2 soll dieses nach holen. Damit soll das MVC
+Pattern, welches für Tntnet entwickelt wurde, in einem grösseren öffentlichen
+Projekt zum Einsatz kommen.
 
-The `autotools` are set up and `autoreconf -i` is run already.
+Das Projekt verwendet wie auch schon das Vorgängerprojekt PostgreSQL als
+Datenbank. Das Datenbankmodell wird beibehalten, so dass beide Systeme auch
+parallel laufen können.
 
-To build run `./configure && make`. To rebuild after changing code run just
-`make`.
+In der Datenbank wird plperl für ein paar Kleinigkeiten verwendet. Das soll in
+diesem Projekt nicht mehr notwendig sein, so dass statt PostgreSQL auch ein
+anderes von tntdb unterstützte Datenbanksystem zum Einsatz kommen könnte.
 
-To add new source files to the project add them to `Makefile.am`.
-
-Static files are put into the `resources` directory and added to the
-`staticSources` variable in `Makefile.am`.
-
-New pages are added to the `view` directory. Those components are embedded into
-the html page found in `webmain.ecpp`.
-
-Html fragments, which are loaded with ajax are created in the `html` directory.
-They get the ecpp extension but are requested with the filename and the
-extension .html appended.
-
-e.g. the url `/foo.html` calls the component `html/foo.ecpp`.
-
-Json requests are created in the `json` directory. A example file can be found
-there. Those files are requested like html fragments but with the extension
-.json appended.
-
-Other directories may be created and added to the mapping found in `main.cpp`.
-
-Deployment
-----------
-
-To deploy a application add your e-mail address into configure.ac and possibly
-change the version number.
-
-Calling `make dist` creates a tar.gz archive with source of the application.
-
-Building that application autotools are not needed any more.
+Das Perl-basierte Weblauf wurde nie veröffentlicht. Bei Interesse stelle ich es
+aber gerne zur Verfügung.
