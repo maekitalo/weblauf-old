@@ -43,12 +43,30 @@ $(function() {
 
     $('#neu').click(function() {
       $('#dialog')
-        .load('veranstaltung.html?neu=1', initdialog)
+        .load('veranstaltung.html', { neu: true }, initdialog)
     });
 
     $('#bearbeiten').click(function() {
       $('#dialog')
         .load('veranstaltung.html', initdialog)
+    });
+
+    $('#loeschen').click(function() {
+        $( "#dialog-confirm" ).dialog({
+            resizable: false,
+            height: 240,
+            width: 400,
+            modal: true,
+            buttons: {
+              "Veranstaltung löschen": function() {
+                // TODO
+                $( this ).dialog( "close" );
+              },
+              Cancel: function() {
+                $( this ).dialog( "close" );
+              }
+            }
+        });
     });
 
 })

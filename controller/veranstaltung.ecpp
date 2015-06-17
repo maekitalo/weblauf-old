@@ -31,4 +31,6 @@ for (auto r: st)
      .get(v.logo);
 }
 
+log_debug(veranstaltungen.size() << " Veranstaltungen gelesen");
+
 </%cpp>

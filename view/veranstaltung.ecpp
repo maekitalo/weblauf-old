@@ -28,8 +28,14 @@
 </table>
 
 <div id="dialog" style="display:none"></div>
+<div id="dialog-confirm" style="display:none" title="Veranstaltung löschen?">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+  Die ausgewählte Veranstaltung wird unwiederruflich gelöscht. Bist Du sicher?</p>
+</div>
+
 
 <button id="bearbeiten">Bearbeiten</button>
 <button id="neu">Neu</button>
+<button id="loeschen">Löschen</button>
 
 <a href="wettkampf">Wettkämpfe</a>
