@@ -6,6 +6,7 @@ $(function() {
         },
         function (reply) {
           document.title = reply.name;
+          information("Veranstaltung <i>" + reply.name + "</i> ausgewählt");
         })
     });
 

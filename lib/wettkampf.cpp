@@ -19,12 +19,13 @@
 
 #include <wettkampf.h>
 #include <cxxtools/serializationinfo.h>
+#include <cxxtools/utf8.h>
 
 void operator>>= (const cxxtools::SerializationInfo& si, Wettkampf& w)
 {
   si.getMember("vid") >>= w.vid;
   si.getMember("wid") >>= w.wid;
-  si.getMember("name") >>= w.name;
+  si.getMember("name") >>= cxxtools::Utf8(w.name);
   si.getMember("art") >>= w.art;
   si.getMember("staVon") >>= w.staVon;
   si.getMember("staBis") >>= w.staBis;
@@ -35,7 +36,7 @@ void operator<<= (cxxtools::SerializationInfo& si, const Wettkampf& w)
 {
   si.addMember("vid") <<= w.vid;
   si.addMember("wid") <<= w.wid;
-  si.addMember("name") <<= w.name;
+  si.addMember("name") <<= cxxtools::Utf8(w.name);
   si.addMember("art") <<= w.art;
   si.addMember("staVon") <<= w.staVon;
   si.addMember("staBis") <<= w.staBis;

@@ -41,7 +41,4 @@ st.set("vid", veranstaltung.vid)
 
 log_info("wettkampf vid=" << wettkampf.vid << " wid=" << wettkampf.wid << ": " << wettkampf.name);
 
-reply.setContentType("application/json");
-reply.out() << cxxtools::Json(wettkampf);
-
 </%cpp>

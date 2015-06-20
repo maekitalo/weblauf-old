@@ -13,6 +13,7 @@ libweblauf_la_SOURCES = \
 
 include_HEADERS = \
 	configuration.h \
+	actionreply.h \
 	include/veranstaltung.h \
 	include/wettkampf.h
 	include/wertung.h
@@ -23,14 +24,15 @@ noinst_HEADERS = \
 	session.ecpp
 
 ecppSources = \
+	actionmain.ecpp \
+	action/setwertung.ecpp \
+	action/setwettkampf.ecpp \
 	controller/index.ecpp \
 	controller/veranstaltung.ecpp \
 	controller/wettkampf.ecpp \
 	controller/wertung.ecpp \
 	html/veranstaltung.ecpp \
 	json/setveranstaltung.ecpp \
-	json/setwertung.ecpp \
-	json/setwettkampf.ecpp \
 	view/index.ecpp \
 	view/veranstaltung.ecpp \
 	view/wettkampf.ecpp \
@@ -43,6 +45,7 @@ staticSources = \
 	resources/images/sort_desc.png \
 	resources/images/sort_both.png \
 	resources/jquery-2.1.4.min.js \
+	resources/jquery-2.1.4.js \
 	resources/jquery.dataTables.min.js \
 	resources/jquery.dataTables.min.css \
 	resources/jquery-ui-1.11.4.custom/jquery-ui.js \
@@ -68,6 +71,25 @@ staticSources = \
 	resources/jquery-ui-1.11.4.custom/index.html \
 	resources/jquery-ui-1.11.4.custom/jquery-ui.theme.min.css \
 	resources/jquery-ui-1.11.4.custom/jquery-ui.min.css \
+	resources/js/noty/packaged/jquery.noty.packaged.min.js \
+	resources/js/noty/packaged/jquery.noty.packaged.js \
+	resources/js/noty/layouts/topLeft.js \
+	resources/js/noty/layouts/centerLeft.js \
+	resources/js/noty/layouts/bottom.js \
+	resources/js/noty/layouts/topCenter.js \
+	resources/js/noty/layouts/center.js \
+	resources/js/noty/layouts/top.js \
+	resources/js/noty/layouts/bottomCenter.js \
+	resources/js/noty/layouts/topRight.js \
+	resources/js/noty/layouts/centerRight.js \
+	resources/js/noty/layouts/bottomLeft.js \
+	resources/js/noty/layouts/inline.js \
+	resources/js/noty/layouts/bottomRight.js \
+	resources/js/noty/jquery.noty.js \
+	resources/js/noty/promise.js \
+	resources/js/noty/themes/bootstrap.js \
+	resources/js/noty/themes/relax.js \
+	resources/js/noty/themes/default.js \
 	resources/veranstaltung.js \
 	resources/weblauf.css \
 	resources/wertung.js \
