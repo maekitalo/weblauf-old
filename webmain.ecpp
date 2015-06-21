@@ -22,8 +22,19 @@
             <li><a href="#">Veranstaltung</a>
                 <ul>
                     <li><a href="veranstaltung">Veranstaltung</a></li>
+                    <li class='split'></a></li>
                     <li><a href="wettkampf">Wettkämpfe</a></li>
                     <li><a href="wertung">Wertungen</a></li>
+                    <li><a href="wgruppe">Wertungsgruppe</a></li>
+                    <li class='split'></a></li>
+                    <li><a href="manwertung">Mannschaftswertung</a></li>
+                    <li><a href="manwertungw">Wertung</a></li>
+                    <li class='split'></a></li>
+                    <li><a href="mehrkampf">Mehrkampf</a></li>
+                    <li class='split'></a></li>
+                    <li><a href="staffel">Staffel</a></li>
+                    <li class='split'></a></li>
+                    <li><a href="listen">Listen</a></li>
                 </ul>
             </li>
             <li><a href="#">Meldung</a>
@@ -31,14 +42,52 @@
                     <li><a href="teilnehmer">Teilnehmer</a></li>
                     <li><a href="meldung">Meldung</a></li>
                     <li><a href="ummelden">Ummelden</a></li>
-                    <li><hr></li>
+                    <li class='split'></a></li>
                     <li><a href="teilnehmerliste">Teilnehmerliste</a></li>
+                    <li><a href="teilnehmerlistew">Teilnehmerliste Wertung</a></li>
+                    <li><a href="teilnehmerlisteg">Teilnehmerliste Wertungsgruppe</a></li>
+                    <li><a href="teilnehmerlisteak">Teilnehmerliste AK</a></li>
+                    <li><a href="teilnehmerlistestaffel">Teilnehmerliste Staffel</a></li>
+                    <li><a href="teilnehmerstatistik">Teilstatistik</a></li>
+                    <li><a href="vereinsliste">Vereinsliste</a></li>
+                    <li class='split'></a></li>
+                    <li><a href="bahnverteilung">Bahnverteilung</a></li>
                 </ul>
             </li>
             <li><a href="#">Ergebnisse</a>
                 <ul>
-                    <li><a href="#">Erfassen</a></li>
-                    <li><a href="#">Ergebnisse</a></li>
+                    <li><a href="ergebniserfassung">Erfassen</a></li>
+                    <li><a href='massenerfassungz'>Massenerfassung/Basiszeit</a></li>
+                    <li><a href='ergebniserfassungstaffel'>Staffel</a></li>
+                    <li><a href='ergebniserfassungstaffel2'>Staffel2</a></li>
+                    <li><a href='winderfassung'>Wind</a></li>
+                    <li><a href='erfassungsstatus'>Erfassungsstatus</a></li>
+                    <li><a href='ergebniskorrektur'>Ergebniskorrektur</a></li>
+                    <li class='split'></li>
+                    <li><a href='ergebnisse'>Ergebnisse</a></li>
+                    <li><a href='ergebnissem'>Mannschaft</a></li>
+                    <li><a href='ergebnissewet'>Wettkampf</a></li>
+                    <li><a href='ergebnissew'>Wertung</a></li>
+                    <li><a href='ergebnissel'>Lauf</a></li>
+                    <li><a href='ergebnisseg'>Wertungsgruppe</a></li>
+                    <li><a href='ergebnisseh'>Mehrkampf</a></li>
+                    <li><a href='ergebnissezw'>Mehrkampf Zwischenwertung</a></li>
+                    <li class='split'></li>
+                    <li><a href='ergebnisse-mg'>Mehrkampfgruppe</a></li>
+                    <li><a href='ergebnissesta'>Staffel</a></li>
+                    <li><a href='khmmannschaft'>Kelkheimer Mannschaftswertung</a></li>
+                    <li class='split'></li>
+                    <li><a href='urkunden'>Urkundendruck einzeln</a></li>
+                    <li class='split'></li>
+                    <li><a href='ergebnislisten'>Ergebnislisten</a></li>
+                    <li><a href='statistik'>Statistik</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Verwaltung</a>
+                <ul>
+                    <li><a href='verein'>Verein</a></li>
+                    <li><a href='altersklassen'>Altersklassen</a></li>
+                    <li><a href='gesamtstatistik'>Gesamtstatistik</a></li>
                 </ul>
             </li>
         </ul>

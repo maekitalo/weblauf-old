@@ -117,4 +117,12 @@ $(function() {
     })
 
     $.noty.defaults.layout = 'topRight';
+
+    $('#nav').hover(
+        function() {
+            $('#content').fadeOut();
+        },
+        function() {
+            $('#content').fadeIn();
+        });
 })
