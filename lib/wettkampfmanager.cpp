@@ -11,11 +11,12 @@
 
 Wettkampf WettkampfManager::getWettkampf(unsigned vid, unsigned wid)
 {
-    tntdb::Statement st = _conn.prepareCached(
-        "select wet_wid, wet_name, wet_art, wet_sta_von, wet_sta_bis, wet_startzeit"
-        "  from wettkampf"
-        " where wet_vid = :vid"
-        "   and wet_wid = :wid");
+    tntdb::Statement st = _conn.prepareCached(R"SQL(
+        select wet_wid, wet_name, wet_art, wet_sta_von, wet_sta_bis, wet_startzeit
+          from wettkampf
+         where wet_vid = :vid
+           and wet_wid = :wid
+        )SQL");
 
     Wettkampf wettkampf;
     wettkampf.vid = vid;
@@ -35,11 +36,12 @@ Wettkampf WettkampfManager::getWettkampf(unsigned vid, unsigned wid)
 
 std::vector<Wettkampf> WettkampfManager::getWettkaempfe(unsigned vid)
 {
-    tntdb::Statement st = _conn.prepareCached(
-        "select wet_wid, wet_name, wet_art, wet_sta_von, wet_sta_bis, wet_startzeit"
-        "  from wettkampf"
-        " where wet_vid = :vid"
-        "  order by wet_wid");
+    tntdb::Statement st = _conn.prepareCached(R"SQL(
+        select wet_wid, wet_name, wet_art, wet_sta_von, wet_sta_bis, wet_startzeit
+          from wettkampf
+         where wet_vid = :vid
+          order by wet_wid
+        )SQL");
 
     st.set("vid", vid);
 

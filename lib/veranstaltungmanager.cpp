@@ -11,10 +11,11 @@
 
 Veranstaltung VeranstaltungManager::getVeranstaltung(unsigned vid)
 {
-    tntdb::Statement st = _conn.prepareCached(
-        "select van_vid, van_datum, van_name, van_ort, van_logo"
-        "  from veranstaltung"
-        " where van_vid = :vid");
+    tntdb::Statement st = _conn.prepareCached(R"SQL(
+        select van_vid, van_datum, van_name, van_ort, van_logo
+          from veranstaltung
+         where van_vid = :vid
+        )SQL");
 
     Veranstaltung veranstaltung;
 
@@ -31,10 +32,11 @@ Veranstaltung VeranstaltungManager::getVeranstaltung(unsigned vid)
 
 std::vector<Veranstaltung> VeranstaltungManager::getVeranstaltungen()
 {
-    tntdb::Statement st = _conn.prepareCached(
-        "select van_vid, van_datum, van_name, van_ort, van_logo"
-        "  from veranstaltung"
-        "  order by van_datum");
+    tntdb::Statement st = _conn.prepareCached(R"SQL(
+        select van_vid, van_datum, van_name, van_ort, van_logo
+          from veranstaltung
+          order by van_datum
+        )SQL");
 
     std::vector<Veranstaltung> veranstaltungen;
     for (auto r: st)
