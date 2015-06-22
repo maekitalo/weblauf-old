@@ -12,6 +12,7 @@ libweblauf_la_SOURCES = \
 	lib/wettkampfmanager.cpp \
 	lib/wettkampf.cpp \
 	lib/wertung.cpp \
+	lib/wertungsgruppe.cpp \
 	lib/wertungmanager.cpp
 
 include_HEADERS = \
@@ -37,12 +38,14 @@ ecppSources = \
 	controller/veranstaltung.ecpp \
 	controller/wettkampf.ecpp \
 	controller/wertung.ecpp \
+	controller/wgruppe.ecpp \
 	html/veranstaltung.ecpp \
 	json/setveranstaltung.ecpp \
 	view/index.ecpp \
 	view/veranstaltung.ecpp \
-	view/wettkampf.ecpp \
 	view/wertung.ecpp \
+	view/wettkampf.ecpp \
+	view/wgruppe.ecpp \
 	webmain.ecpp
 
 staticSources = \

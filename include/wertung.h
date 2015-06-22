@@ -2,7 +2,6 @@
 #define WERTUNG_H
 
 #include <string>
-#include <cxxtools/time.h>
 
 namespace cxxtools
 {

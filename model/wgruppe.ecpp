@@ -1,0 +1,8 @@
+<%request include="wertungsgruppe.h" include="wettkampf.h" include="wertung.h">
+
+Wertungsgruppe wertungsgruppe;
+std::vector<Wettkampf> wettkaempfe;
+std::vector<Wertung> wertungen;
+std::vector<Wertungsgruppe> wertungsgruppen;
+
+</%request>

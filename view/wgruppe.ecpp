@@ -1,0 +1,26 @@
+<%include>model/wgruppe.ecpp</%include>
+<%include>session.ecpp</%include>
+<h1>Wertungsgruppe</h1>
+
+<form method="post">
+  <select name="setwid" onChange="this.form.submit()">
+% if (wettkampf.wid == 0) {
+    <option></option>
+% }
+% for (const auto& w: wettkaempfe) {
+    <option value="<$ w.wid $>"<? w.wid == wettkampf.wid ? " selected"?>><$ w.name $></option>
+% }
+  </select>
+</form>
+
+<form method="post">
+  <select name="setgid" onChange="this.form.submit()">
+% if (wertungsgruppe.gid == 0) {
+    <option></option>
+% }
+% for (const auto& g: wertungsgruppen) {
+    <option value="<$ g.gid $>"<? g.gid == wertungsgruppe.gid ? " selected"?>><$ g.name $></option>
+% }
+  </select>
+</form>
+

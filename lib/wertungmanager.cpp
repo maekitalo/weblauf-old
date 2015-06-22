@@ -70,3 +70,82 @@ std::vector<Wertung> WertungManager::getWertungen(unsigned vid, unsigned wid)
 
     return wertungen;
 }
+
+Wertungsgruppe WertungManager::getWertungsgruppe(unsigned vid, unsigned wid, unsigned gid)
+{
+    Wertungsgruppe wertungsgruppe;
+
+    tntdb::Statement st = _conn.prepareCached(R"SQL(
+        select wgr_name, wgw_rid
+          from wgruppe
+          left outer join wgruppewer
+            on wgr_vid = wgw_vid
+           and wgr_wid = wgw_wid
+           and wgr_gid = wgw_gid
+         where vid = :vid
+           and wid = :wid
+           and gid = :gid
+        )SQL");
+
+    st.set("vid", vid)
+      .set("wid", wid)
+      .set("gid", gid);
+
+    wertungsgruppe.vid = vid;
+    wertungsgruppe.wid = wid;
+    wertungsgruppe.gid = gid;
+
+    for (auto r: st)
+    {
+        r[0].get(wertungsgruppe.name);
+        unsigned rid;
+        if (r[1].get(rid))
+            wertungsgruppe.rid.push_back(rid);
+    }
+
+    return wertungsgruppe;
+}
+
+std::vector<Wertungsgruppe> WertungManager::getWertungsgruppen(unsigned vid, unsigned wid)
+{
+    std::vector<Wertungsgruppe> wertungsgruppen;
+
+    tntdb::Statement st = _conn.prepareCached(R"SQL(
+        select wgr_gid, wgr_name, wgw_rid
+          from wgruppe
+          left outer join wgruppewer
+            on wgr_vid = wgw_vid
+           and wgr_wid = wgw_wid
+           and wgr_gid = wgw_gid
+         where wgr_vid = :vid
+           and wgr_wid = :wid
+        )SQL");
+
+    st.set("vid", vid)
+      .set("wid", wid);
+
+    unsigned gid = 0;
+
+    for (auto r: st)
+    {
+        r[0].get(gid);
+
+        if (wertungsgruppen.empty() || wertungsgruppen.back().gid != gid)
+        {
+            wertungsgruppen.emplace_back();
+            auto& w = wertungsgruppen.back();
+            w.vid = vid;
+            w.wid = wid;
+            w.gid = gid;
+        }
+
+        auto& w = wertungsgruppen.back();
+        r[1].get(w.name);
+
+        unsigned rid;
+        if (r[2].get(rid))
+            w.rid.push_back(rid);
+    }
+
+    return wertungsgruppen;
+}

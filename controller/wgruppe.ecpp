@@ -1,4 +1,4 @@
-<%include>model/wertung.ecpp</%include>
+<%include>model/wgruppe.ecpp</%include>
 <%include>session.ecpp</%include>
 <%args>
 unsigned setwid = 0;
@@ -28,6 +28,7 @@ if (setwid != 0)
 }
 
 WertungManager wertungManager(conn);
-wertungen = wertungManager.getWertungen(wettkampf.vid, wettkampf.wid);
+if (wettkampf.wid)
+    wertungsgruppen = wertungManager.getWertungsgruppen(wettkampf.vid, wettkampf.wid);
 
 </%cpp>
