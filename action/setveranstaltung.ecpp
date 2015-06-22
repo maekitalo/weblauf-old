@@ -1,13 +1,8 @@
 <%pre>
 
 #include "configuration.h"
-
-#include <cxxtools/json.h>
+#include "veranstaltungmanager.h"
 #include <tntdb/connect.h>
-#include <tntdb/connection.h>
-#include <tntdb/statement.h>
-#include <tntdb/row.h>
-#include <tntdb/cxxtools/date.h>
 
 </%pre>
 <%include>session.ecpp</%include>
@@ -21,19 +16,7 @@ wertung = Wertung();
 
 auto& cfg = Configuration::it();
 tntdb::Connection conn = tntdb::connectCached(cfg.dburl());
-
-tntdb::Statement st = conn.prepareCached(
-    "select van_vid, van_datum, van_name, van_ort, van_logo"
-    "  from veranstaltung"
-    " where van_vid = :vid");
-
-st.set("vid", vid)
-  .selectRow()
-  .get(veranstaltung.vid)
-  .get(veranstaltung.datum)
-  .get(veranstaltung.name)
-  .get(veranstaltung.ort)
-  .get(veranstaltung.logo);
+VeranstaltungManager veranstaltungManager(conn);
 
 log_info("veranstaltung vid=" << veranstaltung.vid << ": " << veranstaltung.name);
 

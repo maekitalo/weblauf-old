@@ -9,6 +9,32 @@
 #include <tntdb/statement.h>
 #include <tntdb/row.h>
 
+Wertung WertungManager::getWertung(unsigned vid, unsigned wid, unsigned rid)
+{
+    tntdb::Statement st = _conn.prepareCached(
+        "select wer_rid, wer_name, wer_abhaengig, wer_urkunde, wer_preis"
+        "  from wertung"
+        " where wer_vid = :vid"
+        "   and wer_wid = :wid"
+        "   and wer_rid = :rid");
+
+    Wertung wertung;
+    wertung.vid = vid;
+    wertung.wid = wid;
+
+    st.set("vid", vid)
+      .set("wid", wid)
+      .set("rid", rid)
+      .selectRow()
+      .get(wertung.rid)
+      .get(wertung.name)
+      .get(wertung.abhaengig)
+      .get(wertung.urkunde)
+      .get(wertung.preis);
+
+    return wertung;
+}
+
 std::vector<Wertung> WertungManager::getWertungen(unsigned vid, unsigned wid)
 {
     tntdb::Statement st = _conn.prepareCached(

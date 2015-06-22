@@ -19,6 +19,7 @@ class WertungManager
             : _conn(conn)
         { }
 
+        Wertung getWertung(unsigned vid, unsigned wid, unsigned rid);
         std::vector<Wertung> getWertungen(unsigned vid, unsigned wid);
 
     private:

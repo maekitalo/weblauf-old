@@ -1,8 +1,12 @@
 <%include>model/wertung.ecpp</%include>
 <%include>session.ecpp</%include>
+<%args>
+unsigned setwid = static_cast<unsigned>(-1);
+</%args>
 <%pre>
 
 #include "configuration.h"
+#include "wettkampfmanager.h"
 #include "wertungmanager.h"
 
 #include <tntdb/connect.h>
@@ -13,6 +17,16 @@
 auto& cfg = Configuration::it();
 
 tntdb::Connection conn = tntdb::connectCached(cfg.dburl());
+
+WettkampfManager wettkampfManager(conn);
+wettkaempfe = wettkampfManager.getWettkaempfe(veranstaltung.vid);
+
+if (setwid != static_cast<unsigned>(-1))
+{
+    wettkampf = wettkampfManager.getWettkampf(veranstaltung.vid, setwid);
+    wertung = Wertung();
+}
+
 WertungManager wertungManager(conn);
 wertungen = wertungManager.getWertungen(wettkampf.vid, wettkampf.wid);
 

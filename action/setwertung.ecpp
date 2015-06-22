@@ -1,12 +1,8 @@
 <%pre>
 
 #include "configuration.h"
-
-#include <cxxtools/json.h>
+#include "wertungmanager.h"
 #include <tntdb/connect.h>
-#include <tntdb/connection.h>
-#include <tntdb/statement.h>
-#include <tntdb/row.h>
 
 </%pre>
 <%include>session.ecpp</%include>
@@ -17,26 +13,8 @@ unsigned rid;
 
 auto& cfg = Configuration::it();
 tntdb::Connection conn = tntdb::connectCached(cfg.dburl());
-
-tntdb::Statement st = conn.prepareCached(
-    "select wer_rid, wer_name, wer_abhaengig, wer_urkunde, wer_preis"
-    "  from wertung"
-    " where wer_vid = :vid"
-    "   and wer_wid = :wid"
-    "   and wer_rid = :rid");
-
-wertung.vid = wettkampf.vid;
-wertung.wid = wettkampf.wid;
-
-st.set("vid", wettkampf.vid)
-  .set("wid", wettkampf.wid)
-  .set("rid", rid)
-  .selectRow()
-  .get(wertung.rid)
-  .get(wertung.name)
-  .get(wertung.abhaengig)
-  .get(wertung.urkunde)
-  .get(wertung.preis);
+WertungManager wertungManager(conn);
+wertung = wertungManager.getWertung(wettkampf.vid, wettkampf.wid, rid);
 
 log_info("wertung vid=" << wertung.vid << " wid=" << wertung.wid << " rid=" << wertung.rid << ": " << wertung.name);
 

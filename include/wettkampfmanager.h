@@ -19,6 +19,7 @@ class WettkampfManager
             : _conn(conn)
         { }
 
+        Wettkampf getWettkampf(unsigned vid, unsigned wid);
         std::vector<Wettkampf> getWettkaempfe(unsigned vid);
 
     private:

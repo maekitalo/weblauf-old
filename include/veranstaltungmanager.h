@@ -19,6 +19,7 @@ class VeranstaltungManager
             : _conn(conn)
         { }
 
+        Veranstaltung getVeranstaltung(unsigned vid);
         std::vector<Veranstaltung> getVeranstaltungen();
 
     private:

@@ -2,6 +2,14 @@
 <%include>session.ecpp</%include>
 <h1>Wertung</h1>
 
+<form method="post">
+  <select name="setwid" onChange="this.form.submit()">
+% for (const auto& w: wettkaempfe) {
+    <option value="<$ w.wid $>"<? w.wid == wettkampf.wid ? " selected"?>><$ w.name $></option>
+% }
+  </select>
+</form>
+
 <table class="datatable compact row-border stripe" id="wertungen">
   <thead>
     <tr>

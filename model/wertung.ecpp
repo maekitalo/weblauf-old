@@ -1,5 +1,6 @@
-<%request include="wertung.h">
+<%request include="wettkampf.h" include="wertung.h">
 
+std::vector<Wettkampf> wettkaempfe;
 std::vector<Wertung> wertungen;
 
 </%request>

@@ -9,6 +9,30 @@
 #include <tntdb/row.h>
 #include <tntdb/cxxtools/time.h>
 
+Wettkampf WettkampfManager::getWettkampf(unsigned vid, unsigned wid)
+{
+    tntdb::Statement st = _conn.prepareCached(
+        "select wet_wid, wet_name, wet_art, wet_sta_von, wet_sta_bis, wet_startzeit"
+        "  from wettkampf"
+        " where wet_vid = :vid"
+        "   and wet_wid = :wid");
+
+    Wettkampf wettkampf;
+    wettkampf.vid = vid;
+
+    st.set("vid", vid)
+      .set("wid", wid)
+      .selectRow()
+      .get(wettkampf.wid)
+      .get(wettkampf.name)
+      .get(wettkampf.art)
+      .get(wettkampf.staVon)
+      .get(wettkampf.staBis)
+      .get(wettkampf.startzeit);
+
+    return wettkampf;
+}
+
 std::vector<Wettkampf> WettkampfManager::getWettkaempfe(unsigned vid)
 {
     tntdb::Statement st = _conn.prepareCached(

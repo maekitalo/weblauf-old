@@ -3,6 +3,7 @@
 <%pre>
 
 #include "configuration.h"
+#include "wertungmanager.h"
 #include "wettkampfmanager.h"
 
 #include <tntdb/connect.h>
