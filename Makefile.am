@@ -8,15 +8,21 @@ lib_LTLIBRARIES = libweblauf.la
 
 libweblauf_la_SOURCES = \
 	lib/veranstaltung.cpp \
+	lib/veranstaltungmanager.cpp \
+	lib/wettkampfmanager.cpp \
 	lib/wettkampf.cpp \
-	lib/wertung.cpp
+	lib/wertung.cpp \
+	lib/wertungmanager.cpp
 
 include_HEADERS = \
 	configuration.h \
 	actionreply.h \
 	include/veranstaltung.h \
-	include/wettkampf.h
-	include/wertung.h
+	include/veranstaltungmanager.h \
+	include/wettkampf.h \
+	include/wettkampfmanager.h \
+	include/wertung.h \
+	include/wertungmanager.h
 
 noinst_HEADERS = \
 	model/index.ecpp \
