@@ -12,7 +12,6 @@ std::string maincomp = request.getArg("next");
     <meta charset="UTF-8">
     <meta name="description" content="weblauf application">
     <link rel="stylesheet" href="weblauf.css" type="text/css">
-    <link rel="stylesheet" href="<$ maincomp $>.css" type="text/css">
     <link rel="stylesheet" href="dropdown.css" type="text/css">
     <link rel="stylesheet" href="jquery.dataTables.min.css" type="text/css">
     <link rel="stylesheet" href="jquery-ui-1.11.4.custom/jquery-ui.min.css" type="text/css">
