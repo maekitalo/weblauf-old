@@ -1,4 +1,5 @@
 <%include>model/veranstaltung.ecpp</%include>
+<%include>session.ecpp</%include>
 <%pre>
 
 #include "configuration.h"
@@ -9,9 +10,7 @@
 </%pre>
 <%cpp>
 
-auto& cfg = Configuration::it();
-
-tntdb::Connection conn = tntdb::connectCached(cfg.dburl());
+tntdb::Connection conn = tntdb::connectCached(configuration.dburl());
 VeranstaltungManager veranstaltungManager(conn);
 veranstaltungen = veranstaltungManager.getVeranstaltungen();
 

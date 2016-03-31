@@ -14,9 +14,7 @@ unsigned setwid = 0;
 </%pre>
 <%cpp>
 
-auto& cfg = Configuration::it();
-
-tntdb::Connection conn = tntdb::connectCached(cfg.dburl());
+tntdb::Connection conn = tntdb::connectCached(configuration.dburl());
 
 WettkampfManager wettkampfManager(conn);
 wettkaempfe = wettkampfManager.getWettkaempfe(veranstaltung.vid);

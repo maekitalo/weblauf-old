@@ -11,8 +11,7 @@ unsigned rid;
 </%args>
 <%cpp>
 
-auto& cfg = Configuration::it();
-tntdb::Connection conn = tntdb::connectCached(cfg.dburl());
+tntdb::Connection conn = tntdb::connectCached(configuration.dburl());
 WertungManager wertungManager(conn);
 wertung = wertungManager.getWertung(wettkampf.vid, wettkampf.wid, rid);
 

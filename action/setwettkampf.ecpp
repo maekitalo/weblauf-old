@@ -14,8 +14,7 @@ unsigned wid;
 
 wertung = Wertung();
 
-auto& cfg = Configuration::it();
-tntdb::Connection conn = tntdb::connectCached(cfg.dburl());
+tntdb::Connection conn = tntdb::connectCached(configuration.dburl());
 WettkampfManager wettkampfManager(conn);
 
 wettkampf = wettkampfManager.getWettkampf(veranstaltung.vid, wid);

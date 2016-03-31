@@ -3,7 +3,6 @@
 <%pre>
 
 #include "configuration.h"
-#include "wertungmanager.h"
 #include "wettkampfmanager.h"
 
 #include <tntdb/connect.h>
@@ -11,9 +10,7 @@
 </%pre>
 <%cpp>
 
-auto& cfg = Configuration::it();
-
-tntdb::Connection conn = tntdb::connectCached(cfg.dburl());
+tntdb::Connection conn = tntdb::connectCached(configuration.dburl());
 WettkampfManager wettkampfManager(conn);
 
 wettkaempfe = wettkampfManager.getWettkaempfe(veranstaltung.vid);
