@@ -1,0 +1,40 @@
+<%include>session.ecpp</%include>
+<%args>
+bool neu;
+</%args>
+<%cpp>
+Wettkampf w;
+if (!neu)
+{
+  w = wettkampf;
+}
+</%cpp>
+<input type="hidden" name="vid" id="vid" value="<$ w.vid $>"></td>
+<input type="hidden" name="wid" id="wid" value="<$ w.wid $>"></td>
+<div id="dialog-form" title="Wettkampf">
+    <fieldset>
+      <legend>Wettkampf</legend>
+      <table>
+        <tr>
+          <td><label for="name">Name</label></td>
+          <td><input type="text" name="name" id="name" value="<$ w.name $>"></td>
+        </tr>
+        <tr>
+          <td><label for="ort">Art</label></td>
+          <td><input type="text" name="art" id="art" value="<$ w.art $>" class="text ui-widget-content ui-corner-all"></td>
+        </tr>
+        <tr>
+          <td><label for="ort">Startnummer von</label></td>
+          <td><input type="text" name="stavon" id="stavon" value="<$ w.staVon $>" class="text ui-widget-content ui-corner-all"></td>
+        </tr>
+        <tr>
+          <td><label for="ort">Startnummer bis</label></td>
+          <td><input type="text" name="stabis" id="stabis" value="<$ w.staBis $>" class="text ui-widget-content ui-corner-all"></td>
+        </tr>
+        <tr>
+          <td><label for="ort">Startzeit</label></td>
+          <td><input type="text" name="startzeit" id="startzeit" value="<$ w.startzeit.toString() $>" class="text ui-widget-content ui-corner-all"></td>
+        </tr>
+      <table>
+    </fieldset>
+</div>

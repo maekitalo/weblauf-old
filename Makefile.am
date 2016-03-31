@@ -42,6 +42,7 @@ ecppSources = \
 	controller/wertung.ecpp \
 	controller/wgruppe.ecpp \
 	html/veranstaltung.ecpp \
+	html/wettkampf.ecpp \
 	json/setveranstaltung.ecpp \
 	view/index.ecpp \
 	view/veranstaltung.ecpp \
