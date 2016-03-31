@@ -1,0 +1,29 @@
+<%pre>
+
+#include "configuration.h"
+#include "veranstaltungmanager.h"
+#include <tntdb/connect.h>
+
+</%pre>
+<%include>session.ecpp</%include>
+<%args>
+unsigned vid;
+name;
+ort;
+datum;
+logo;
+</%args>
+<%cpp>
+log_info("veranstaltung vid=<" << vid << "> name=<" << name << "> ort=<" << ort << "> datum=<" << datum << "> logo=<" << logo << ">");
+
+tntdb::Connection conn = tntdb::connectCached(configuration.dburl());
+VeranstaltungManager veranstaltungManager(conn);
+Veranstaltung v;
+v.vid = vid;
+v.name = name;
+v.datum = cxxtools::Date(datum, "%d.%m.%Y");
+v.ort = ort;
+v.logo = logo;
+veranstaltungManager.putVeranstaltung(v);
+
+</%cpp>

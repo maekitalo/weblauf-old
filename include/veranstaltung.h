@@ -37,6 +37,9 @@ struct Veranstaltung
     std::string ort;
     std::string logo;
 
+    bool isNew() const
+    { return vid == 0; }
+
     Veranstaltung()
         : vid(0),
           datum(cxxtools::Clock::getLocalTime().date())

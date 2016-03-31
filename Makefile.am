@@ -34,6 +34,8 @@ ecppSources = \
 	actionmain.ecpp \
 	action/setwertung.ecpp \
 	action/setwettkampf.ecpp \
+	action/veranstaltung/del.ecpp \
+	action/veranstaltung/save.ecpp \
 	controller/index.ecpp \
 	controller/veranstaltung.ecpp \
 	controller/wettkampf.ecpp \

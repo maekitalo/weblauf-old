@@ -18,4 +18,6 @@ WettkampfManager wettkampfManager(conn);
 
 wettkaempfe = wettkampfManager.getWettkaempfe(veranstaltung.vid);
 
+noty.information("wettkämpfe geladen");
+
 </%cpp>

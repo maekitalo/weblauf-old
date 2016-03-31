@@ -9,6 +9,7 @@ if (!neu)
   v = veranstaltung;
 }
 </%cpp>
+<input type="hidden" name="vid" id="vid" value="<$ v.vid $>"></td>
 <div id="dialog-form" title="Veranstaltung">
     <fieldset>
       <legend>Veranstaltung</legend>

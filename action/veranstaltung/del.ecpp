@@ -6,17 +6,12 @@
 
 </%pre>
 <%include>session.ecpp</%include>
-<%args>
-unsigned vid;
-</%args>
 <%cpp>
-
-wettkampf = Wettkampf();
-wertung = Wertung();
+log_info("del veranstaltung vid=<" << veranstaltung.vid << ">");
 
 tntdb::Connection conn = tntdb::connectCached(configuration.dburl());
 VeranstaltungManager veranstaltungManager(conn);
-
-log_info("veranstaltung vid=" << veranstaltung.vid << ": " << veranstaltung.name);
+veranstaltungManager.delVeranstaltung(veranstaltung.vid);
+veranstaltung = Veranstaltung();
 
 </%cpp>

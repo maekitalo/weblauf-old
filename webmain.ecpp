@@ -1,3 +1,10 @@
+<%pre>
+#include <cxxtools/json.h>
+</%pre>
+<%cpp>
+std::string maincomp = request.getArg("next");
+</%cpp>
+<%include>session.ecpp</%include>
 <!DOCTYPE html>
 <html>
   <head>
@@ -5,6 +12,7 @@
     <meta charset="UTF-8">
     <meta name="description" content="weblauf application">
     <link rel="stylesheet" href="weblauf.css" type="text/css">
+    <link rel="stylesheet" href="<$ maincomp $>.css" type="text/css">
     <link rel="stylesheet" href="dropdown.css" type="text/css">
     <link rel="stylesheet" href="jquery.dataTables.min.css" type="text/css">
     <link rel="stylesheet" href="jquery-ui-1.11.4.custom/jquery-ui.min.css" type="text/css">
@@ -14,7 +22,12 @@
     <script src="jquery.dataTables.min.js"></script>
     <script src="js/noty/packaged/jquery.noty.packaged.min.js"></script>
     <script src="weblauf.js"></script>
-    <script src="<$ request.getArg("main") $>.js"></script>
+    <script src="<$ maincomp $>.js"></script>
+    <script>
+      $(function() {
+          processNotifications(<$$ cxxtools::Json(noty) $>)
+      });
+    </script>
   </head>
   <body>
     <div class="nav">
@@ -94,7 +107,7 @@
     </div>
 
     <div id="content">
-       <& ("view/" + request.getArg("main")) qparam >
+       <& ("view/" + maincomp) qparam >
     </div>
   </body>
 </html>

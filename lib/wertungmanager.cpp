@@ -9,8 +9,14 @@
 #include <tntdb/statement.h>
 #include <tntdb/row.h>
 
+#include <cxxtools/log.h>
+
+log_define("weblauf.wertung.manager");
+
 Wertung WertungManager::getWertung(unsigned vid, unsigned wid, unsigned rid)
 {
+    log_debug("getWertung(" << vid << ", " << wid << ", " << rid << ')');
+
     tntdb::Statement st = _conn.prepareCached(R"SQL(
         select wer_rid, wer_name, wer_abhaengig, wer_urkunde, wer_preis
           from wertung
@@ -38,6 +44,8 @@ Wertung WertungManager::getWertung(unsigned vid, unsigned wid, unsigned rid)
 
 std::vector<Wertung> WertungManager::getWertungen(unsigned vid, unsigned wid)
 {
+    log_debug("getWertungen(" << vid << ", " << wid << ')');
+
     tntdb::Statement st = _conn.prepareCached(R"SQL(
         select w.wer_rid, w.wer_name, a.wer_name, w.wer_urkunde, w.wer_preis
           from wertung w
@@ -68,11 +76,15 @@ std::vector<Wertung> WertungManager::getWertungen(unsigned vid, unsigned wid)
          .get(w.preis);
     }
 
+    log_debug(wertungen.size() << " Wertungen");
+
     return wertungen;
 }
 
 Wertungsgruppe WertungManager::getWertungsgruppe(unsigned vid, unsigned wid, unsigned gid)
 {
+    log_debug("getWertungsgruppe(" << vid << ", " << wid << ", " << gid << ')');
+
     Wertungsgruppe wertungsgruppe;
 
     tntdb::Statement st = _conn.prepareCached(R"SQL(
@@ -108,6 +120,8 @@ Wertungsgruppe WertungManager::getWertungsgruppe(unsigned vid, unsigned wid, uns
 
 std::vector<Wertungsgruppe> WertungManager::getWertungsgruppen(unsigned vid, unsigned wid)
 {
+    log_debug("getWertungsgruppen(" << vid << ", " << wid << ')');
+
     std::vector<Wertungsgruppe> wertungsgruppen;
 
     tntdb::Statement st = _conn.prepareCached(R"SQL(
@@ -146,6 +160,8 @@ std::vector<Wertungsgruppe> WertungManager::getWertungsgruppen(unsigned vid, uns
         if (r[2].get(rid))
             w.rid.push_back(rid);
     }
+
+    log_debug(wertungsgruppen.size() << " Wertungsgruppen");
 
     return wertungsgruppen;
 }

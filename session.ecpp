@@ -5,3 +5,14 @@ Wettkampf wettkampf;
 Wertung wertung;
 
 </%session>
+<%cpp>
+const Configuration& configuration = Configuration::it();
+</%cpp>
+<%request include="noty.h" include="configuration.h">
+
+    // We define a Noty object here.
+    // When a normal mvc request is processed, this noty object is sent as a
+    // json structure to the browser, which displays the notifications.
+    Noty noty;
+
+</%request>

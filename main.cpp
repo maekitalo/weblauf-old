@@ -45,6 +45,11 @@ int main(int argc, char* argv[])
     app.mapUrl("^/(.*)", "resources")
        .setPathInfo("resources/$1");
 
+    // Actions
+    //
+    app.mapUrl("^/(.*)\\.action$", "actionmain")
+       .setArg("next", "$1");
+
     // Controller
     //
     // we set the default http return code to DECLINED, so that tntnet continues
@@ -67,13 +72,15 @@ int main(int argc, char* argv[])
     app.mapUrl("^/(.*)\\.(.*)$", "$2/$1");
 
     app.mapUrl("\\.js$", "empty@tntnet")
-       .setArg("ContentType", "application/javascript");
+       .setArg("Content-Type", "application/javascript");
+    app.mapUrl("\\.css$", "empty@tntnet")
+       .setArg("Content-Type", "text/css");
 
     // View
     app.mapUrl("^/$", "webmain")  // index page
-       .setArg("main", "index");
+       .setArg("next", "index");
     app.mapUrl("^/(.*)$", "webmain")
-       .setArg("main", "$1");
+       .setArg("next", "$1");
 
     app.run();
   }

@@ -9,8 +9,14 @@
 #include <tntdb/row.h>
 #include <tntdb/cxxtools/time.h>
 
+#include <cxxtools/log.h>
+
+log_define("weblauf.wettkampf.manager")
+
 Wettkampf WettkampfManager::getWettkampf(unsigned vid, unsigned wid)
 {
+    log_debug("getWettkampf(" << vid << ", " << wid << ')');
+
     tntdb::Statement st = _conn.prepareCached(R"SQL(
         select wet_wid, wet_name, wet_art, wet_sta_von, wet_sta_bis, wet_startzeit
           from wettkampf
@@ -58,6 +64,8 @@ std::vector<Wettkampf> WettkampfManager::getWettkaempfe(unsigned vid)
          .get(w.staBis)
          .get(w.startzeit);
     }
+
+    log_debug(wettkaempfe.size() << " wettkaempfe found");
 
     return wettkaempfe;
 }

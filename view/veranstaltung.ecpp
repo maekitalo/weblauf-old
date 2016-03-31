@@ -18,7 +18,7 @@
     <tr>
       <td><input type="radio" name="vid" value="<$ v.vid $>"<? veranstaltung.vid == v.vid ? " checked"?>></td>
       <td><$ v.vid $></td>
-      <td><$ v.datum.toString() $></td>
+      <td><$ v.datum.toString("%d.%m.%Y") $></td>
       <td><$ v.name $></td>
       <td><$ v.ort $></td>
       <td><$ v.logo $></td>

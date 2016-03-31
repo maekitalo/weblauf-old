@@ -21,6 +21,8 @@ class VeranstaltungManager
 
         Veranstaltung getVeranstaltung(unsigned vid);
         std::vector<Veranstaltung> getVeranstaltungen();
+        void putVeranstaltung(const Veranstaltung& v);
+        void delVeranstaltung(unsigned vid);
 
     private:
         tntdb::Connection _conn;

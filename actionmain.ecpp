@@ -10,7 +10,11 @@
 
 try
 {
-    unsigned ret = callComp(request.getArg("next"), request, reply, qparam);
+    std::string action = request.getArg("next");
+    log_info("action <" << action << '>');
+
+    unsigned ret = callComp("action/" + action, request, reply, qparam);
+
     log_debug("ret=" << ret);
     if (ret > HTTP_OK)
         return ret;

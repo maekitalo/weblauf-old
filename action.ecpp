@@ -1,3 +1,5 @@
 <%request include="actionreply.h">
-ActionReply actionReply;
+
+    ActionReply actionReply;
+
 </%request>

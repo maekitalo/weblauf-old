@@ -1,4 +1,9 @@
 $(function() {
+    function reload()
+    {
+        window.location.reload();
+    }
+
     $('input[name="vid"]').click(function() {
       $.getJSON('/setveranstaltung.json',
         {
@@ -11,8 +16,9 @@ $(function() {
     });
 
     $('#veranstaltungen').DataTable({
-      "order": [ 1, 'desc' ],
-      "columns": [
+      stateSave: true,
+      order: [ 1, 'desc' ],
+      columns: [
         { "orderable": false },
         null, // id
         null, // datum
@@ -29,12 +35,21 @@ $(function() {
               width: 400,
               modal: true,
               buttons: {
-                Speichern: function() {
-                  // TODO
-                  dialog.dialog("close");
-                  document.location.reload();
+                "Speichern": function() {
+                  action('veranstaltung/save', {
+                      vid: $('#vid').val(),
+                      name: $('#name').val(),
+                      ort: $('#ort').val(),
+                      datum: $('#datum').val(),
+                      logo: $('#logo').val()
+                  },
+                  function () {
+                      information("Veranstaltung gespeichert");
+                      dialog.dialog("close");
+                      reload();
+                  })
                 },
-                Abbrechen: function() {
+                "Abbrechen": function() {
                   dialog.dialog("close");
                 }
               }
@@ -53,17 +68,22 @@ $(function() {
     });
 
     $('#loeschen').click(function() {
-        $( "#dialog-confirm" ).dialog({
+        var dialog = $('#dialog-confirm').dialog({
             resizable: false,
             height: 240,
             width: 400,
             modal: true,
             buttons: {
               "Veranstaltung löschen": function() {
-                // TODO
-                $( this ).dialog( "close" );
+                action('veranstaltung/del', {
+                },
+                function () {
+                    information("Veranstaltung gelöscht");
+                    dialog.dialog( "close" );
+                    reload();
+                })
               },
-              Cancel: function() {
+              "Abbrechen": function() {
                 $( this ).dialog( "close" );
               }
             }
