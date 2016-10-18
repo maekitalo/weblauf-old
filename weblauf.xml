@@ -28,7 +28,7 @@
         <level>INFO</level>
       </logger>
       <logger>
-        <category>component.controller.veranstaltung</category>
+        <category>controller</category>
         <level>INFO</level>
       </logger>
     </loggers>

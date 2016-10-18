@@ -9,14 +9,16 @@ if (!neu)
   v = veranstaltung;
 }
 </%cpp>
+% if (!neu) {
 <input type="hidden" name="vid" id="vid" value="<$ v.vid $>"></td>
+% }
 <div id="dialog-form" title="Veranstaltung">
     <fieldset>
       <legend>Veranstaltung</legend>
       <table>
         <tr>
           <td><label for="name">Name</label></td>
-          <td><input type="text" name="name" id="name" value="<$ v.name $>"></td>
+          <td><input type="text" name="name" id="name" value="<$ v.name $>" class="text ui-widget-content ui-corner-all"></td>
         </tr>
         <tr>
           <td><label for="ort">Ort</label></td>

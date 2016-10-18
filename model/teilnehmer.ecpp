@@ -1,0 +1,5 @@
+<%session include="person.h">
+
+Person person;
+
+</%session>

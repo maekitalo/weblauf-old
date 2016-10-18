@@ -1,0 +1,38 @@
+<%args>
+search;
+</%args>
+<%include>session.ecpp</%include>
+<%pre>
+
+#include "configuration.h"
+#include "teilnehmermanager.h"
+
+#include <tntdb/connect.h>
+
+</%pre>
+<%cpp>
+
+if (search.empty())
+    return HTTP_NOT_FOUND;
+
+tntdb::Connection conn = tntdb::connectCached(configuration.dburl());
+
+TeilnehmerManager tm(conn);
+
+auto personen = tm.searchPerson(veranstaltung.vid, search);
+
+</%cpp>
+<table>
+ <tr>
+  <th>Nachname</th>
+  <th>Vorname</th>
+  <th>Verein</th>
+ </tr>
+% for (const auto& p: personen) {
+ <tr>
+  <td><$ p.nachname $></td>
+  <td><$ p.vorname $></td>
+  <td><$ p.verein $></td>
+ </tr>
+% }
+</table>

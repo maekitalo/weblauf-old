@@ -1,0 +1,57 @@
+<%include>model/teilnehmer.ecpp</%include>
+<fieldset>
+  <legend>Teilnehmer</legend>
+  <table>
+   <tr>
+    <td><label for="nachname">Nachname</label></td>
+    <td><input type="text" name="nachname" id="nachname" value="<$ person.nachname $>" class="text ui-widget-content ui-corner-all"></td>
+   </tr>
+   <tr>
+    <td><label for="vorname">Vorname</label></td>
+    <td><input type="text" name="vorname" id="vorname" value="<$ person.vorname $>" class="text ui-widget-content ui-corner-all"></td>
+   </tr>
+   <tr>
+    <td><label for="verein">Verein</label></td>
+    <td><input type="text" name="verein" id="verein" value="<$ person.verein $>" class="text ui-widget-content ui-corner-all"></td>
+   </tr>
+   <tr>
+    <td><label for="geschlecht">Geschlecht</label></td>
+    <td><input type="radio" name="geschlecht" id="geschlecht" value="M"<? person.maennlich() ? " checked" ?> class="radio ui-widget-content ui-corner-all">M
+        <input type="radio" name="geschlecht" id="geschlecht" value="W"<? person.weiblich() ? " checked" ?> class="radio ui-widget-content ui-corner-all">W
+    </td>
+   </tr>
+   <tr>
+    <td><label for="jahrgang">Jahrgang</label></td>
+    <td><input type="text" name="jahrgang" id="jahrgang" value="<$ person.jahrgang $>" class="text ui-widget-content ui-corner-all"></td>
+   </tr>
+   <tr class="viewlong">
+    <td><label for="strasse">Stra&szlig;e</label></td>
+    <td><input type="text" name="strasse" id="strasse" value="<$ person.strasse $>" class="text ui-widget-content ui-corner-all"></td>
+   </tr>
+   <tr class="viewlong">
+    <td><label for="ort">Ort</label></td>
+    <td><input type="text" name="ort" id="ort" value="<$ person.ort $>" class="text ui-widget-content ui-corner-all"></td>
+   </tr>
+   <tr class="viewlong">
+    <td><label for="plz">Plz</label></td>
+    <td><input type="text" name="plz" id="plz" value="<$ person.plz $>" class="text ui-widget-content ui-corner-all"></td>
+   </tr>
+   <tr class="viewlong">
+    <td><label for="land">Land</label></td>
+    <td><input type="text" name="land" id="land" value="<$ person.land $>" class="text ui-widget-content ui-corner-all"></td>
+   </tr>
+   <tr class="viewlong">
+    <td><label for="nationalitaet">Nationalit&auml;t</label></td>
+    <td><input type="text" name="nationalitaet" id="nationalitaet" value="<$ person.nationalitaet $>" class="text ui-widget-content ui-corner-all"></td>
+   </tr>
+  </table>
+</fieldset>
+
+<div class="buttons">
+ <input type="button" name="speichern" value="Speichern">
+ <input type="button" name="meldung" value="Meldung">
+ <input type="button" name="langeanzeige" value="lange Anzeige">
+ <input type="button" name="leistung" value="Leistung">
+</div>
+
+<div id="db"></div>

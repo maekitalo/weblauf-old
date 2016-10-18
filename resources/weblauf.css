@@ -27,3 +27,8 @@ h2 {
   font-size: 13pt;
 }
 
+.buttons {
+  margin-top: 10px;
+  padding-top: 5px;
+  border-top: 1px solid black;
+}

@@ -28,8 +28,8 @@ struct Wettkampf
         { }
 };
 
-void operator>>= (const cxxtools::SerializationInfo& si, Wettkampf& v);
+void operator>>= (const cxxtools::SerializationInfo& si, Wettkampf& w);
 
-void operator<<= (cxxtools::SerializationInfo& si, const Wettkampf& v);
+void operator<<= (cxxtools::SerializationInfo& si, const Wettkampf& w);
 
 #endif // WETTKAMPF_H

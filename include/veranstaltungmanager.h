@@ -15,7 +15,7 @@
 class VeranstaltungManager
 {
     public:
-        VeranstaltungManager(tntdb::Connection conn)
+        explicit VeranstaltungManager(tntdb::Connection conn)
             : _conn(conn)
         { }
 

@@ -7,6 +7,8 @@ bin_PROGRAMS = weblauf
 lib_LTLIBRARIES = libweblauf.la
 
 libweblauf_la_SOURCES = \
+	lib/person.cpp \
+	lib/teilnehmermanager.cpp \
 	lib/veranstaltung.cpp \
 	lib/veranstaltungmanager.cpp \
 	lib/wettkampfmanager.cpp \
@@ -18,6 +20,8 @@ libweblauf_la_SOURCES = \
 include_HEADERS = \
 	configuration.h \
 	actionreply.h \
+	include/person.h \
+	include/teilnehmermanager.h \
 	include/veranstaltung.h \
 	include/veranstaltungmanager.h \
 	include/wettkampf.h \
@@ -27,6 +31,7 @@ include_HEADERS = \
 
 noinst_HEADERS = \
 	model/index.ecpp \
+	model/teilnehmer.ecpp \
 	model/veranstaltung.ecpp \
 	session.ecpp
 
@@ -41,10 +46,12 @@ ecppSources = \
 	controller/wettkampf.ecpp \
 	controller/wertung.ecpp \
 	controller/wgruppe.ecpp \
+	html/personen.ecpp \
 	html/veranstaltung.ecpp \
 	html/wettkampf.ecpp \
 	json/setveranstaltung.ecpp \
 	view/index.ecpp \
+	view/teilnehmer.ecpp \
 	view/veranstaltung.ecpp \
 	view/wertung.ecpp \
 	view/wettkampf.ecpp \
@@ -102,6 +109,7 @@ staticSources = \
 	resources/js/noty/themes/bootstrap.js \
 	resources/js/noty/themes/relax.js \
 	resources/js/noty/themes/default.js \
+	resources/teilnehmer.js \
 	resources/veranstaltung.js \
 	resources/weblauf.css \
 	resources/wertung.js \
