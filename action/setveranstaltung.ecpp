@@ -1,8 +1,6 @@
 <%pre>
 
-#include "configuration.h"
 #include "veranstaltungmanager.h"
-#include <tntdb/connect.h>
 
 </%pre>
 <%include>session.ecpp</%include>
@@ -14,8 +12,8 @@ unsigned vid;
 wettkampf = Wettkampf();
 wertung = Wertung();
 
-tntdb::Connection conn = tntdb::connectCached(configuration.dburl());
-VeranstaltungManager veranstaltungManager(conn);
+VeranstaltungManager veranstaltungManager(ctx);
+veranstaltung = veranstaltungManager.getVeranstaltung(vid);
 
 log_info("veranstaltung vid=" << veranstaltung.vid << ": " << veranstaltung.name);
 

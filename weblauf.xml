@@ -41,7 +41,7 @@
 
   </logging>
 
-  <!-- <htdocs>resources</htdocs> -->
+  <htdocs>resources</htdocs>
   <!-- <dburl>sqlite:weblauf.db</dburl> -->
   <!-- <dburl>postgresql:dbname=weblauf user=foo password=bar</dburl> -->
   <!-- <dburl>mysql:db=weblauf;user=foo;passwd=bar</dburl> -->

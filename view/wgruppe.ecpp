@@ -1,5 +1,33 @@
-<%include>model/wgruppe.ecpp</%include>
 <%include>session.ecpp</%include>
+<%args>
+unsigned setwid = 0;
+</%args>
+<%pre>
+
+#include "configuration.h"
+#include "wettkampfmanager.h"
+#include "wertungmanager.h"
+
+</%pre>
+<%cpp>
+
+WettkampfManager wettkampfManager(ctx);
+auto wettkaempfe = wettkampfManager.getWettkaempfe(veranstaltung.vid);
+
+if (setwid != 0)
+{
+    wettkampf = wettkampfManager.getWettkampf(veranstaltung.vid, setwid);
+    wertung = Wertung();
+}
+
+WertungManager wertungManager(ctx);
+std::vector<Wertungsgruppe> wertungsgruppen;
+if (wettkampf.wid)
+    wertungsgruppen = wertungManager.getWertungsgruppen(wettkampf.vid, wettkampf.wid);
+
+Wertungsgruppe wertungsgruppe;
+
+</%cpp>
 <h1>Wertungsgruppe</h1>
 
 <form method="post">
@@ -23,4 +51,3 @@
 % }
   </select>
 </form>
-

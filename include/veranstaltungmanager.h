@@ -8,15 +8,15 @@
 
 #include "veranstaltung.h"
 
-#include <tntdb/connection.h>
+#include <managercontext.h>
 
 #include <vector>
 
 class VeranstaltungManager
 {
     public:
-        explicit VeranstaltungManager(tntdb::Connection conn)
-            : _conn(conn)
+        explicit VeranstaltungManager(ManagerContext& ctx)
+            : _ctx(ctx)
         { }
 
         Veranstaltung getVeranstaltung(unsigned vid);
@@ -25,7 +25,7 @@ class VeranstaltungManager
         void delVeranstaltung(unsigned vid);
 
     private:
-        tntdb::Connection _conn;
+        ManagerContext& _ctx;
 };
 
 #endif // VERANSTALTUNGMANAGER_H

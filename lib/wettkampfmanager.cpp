@@ -5,6 +5,8 @@
 
 #include "wettkampfmanager.h"
 
+#include <managercontextimpl.h>
+
 #include <tntdb/statement.h>
 #include <tntdb/row.h>
 #include <tntdb/cxxtools/time.h>
@@ -17,7 +19,7 @@ Wettkampf WettkampfManager::getWettkampf(unsigned vid, unsigned wid)
 {
     log_debug("getWettkampf(" << vid << ", " << wid << ')');
 
-    tntdb::Statement st = _conn.prepareCached(R"SQL(
+    tntdb::Statement st = _ctx.impl().conn().prepareCached(R"SQL(
         select wet_wid, wet_name, wet_art, wet_sta_von, wet_sta_bis, wet_startzeit
           from wettkampf
          where wet_vid = :vid
@@ -42,7 +44,7 @@ Wettkampf WettkampfManager::getWettkampf(unsigned vid, unsigned wid)
 
 std::vector<Wettkampf> WettkampfManager::getWettkaempfe(unsigned vid)
 {
-    tntdb::Statement st = _conn.prepareCached(R"SQL(
+    tntdb::Statement st = _ctx.impl().conn().prepareCached(R"SQL(
         select wet_wid, wet_name, wet_art, wet_sta_von, wet_sta_bis, wet_startzeit
           from wettkampf
          where wet_vid = :vid

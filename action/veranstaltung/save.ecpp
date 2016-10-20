@@ -2,7 +2,9 @@
 
 #include "configuration.h"
 #include "veranstaltungmanager.h"
-#include <tntdb/connect.h>
+
+#include <managercontext.h>
+#include <managercontextimpl.h>
 
 </%pre>
 <%include>session.ecpp</%include>
@@ -16,8 +18,7 @@ logo;
 <%cpp>
 log_info("veranstaltung vid=<" << vid << "> name=<" << name << "> ort=<" << ort << "> datum=<" << datum << "> logo=<" << logo << ">");
 
-tntdb::Connection conn = tntdb::connectCached(configuration.dburl());
-VeranstaltungManager veranstaltungManager(conn);
+VeranstaltungManager veranstaltungManager(ctx);
 Veranstaltung v;
 v.vid = vid;
 v.name = name;

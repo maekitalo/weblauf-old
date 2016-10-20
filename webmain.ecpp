@@ -1,10 +1,3 @@
-<%pre>
-#include <cxxtools/json.h>
-</%pre>
-<%cpp>
-std::string maincomp = request.getArg("next");
-</%cpp>
-<%include>session.ecpp</%include>
 <!DOCTYPE html>
 <html>
   <head>
@@ -13,20 +6,17 @@ std::string maincomp = request.getArg("next");
     <meta name="description" content="weblauf application">
     <link rel="stylesheet" href="weblauf.css" type="text/css">
     <link rel="stylesheet" href="dropdown.css" type="text/css">
-    <link rel="stylesheet" href="jquery.dataTables.min.css" type="text/css">
     <link rel="stylesheet" href="jquery-ui-1.11.4.custom/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="jquery-ui-1.11.4.custom/jquery-ui.theme.min.css" type="text/css">
+    <link rel="stylesheet" href="DataTables-1.10.12/media/css/jquery.dataTables.min.css" type="text/css">
+    <link rel="stylesheet" href="DataTables-1.10.12/extensions/Select/css/select.dataTables.min.css" type="text/css">
     <script src="jquery-2.1.4.min.js"></script>
     <script src="jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
-    <script src="jquery.dataTables.min.js"></script>
+    <script src="DataTables-1.10.12/media/js/jquery.dataTables.min.js"></script>
+    <script src="DataTables-1.10.12/extensions/Select/js/dataTables.select.js"></script>
     <script src="js/noty/packaged/jquery.noty.packaged.min.js"></script>
+    <script src="js/tntnet.js"></script>
     <script src="weblauf.js"></script>
-    <script src="<$ maincomp $>.js"></script>
-    <script>
-      $(function() {
-          processNotifications(<$$ cxxtools::Json(noty) $>)
-      });
-    </script>
   </head>
   <body>
     <div class="nav">
@@ -105,8 +95,6 @@ std::string maincomp = request.getArg("next");
         </ul>
     </div>
 
-    <div id="content">
-       <& ("view/" + maincomp) qparam >
-    </div>
+    <div id="content"></div>
   </body>
 </html>

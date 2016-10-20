@@ -1,0 +1,20 @@
+<%include>session.ecpp</%include>
+<%args>
+bool beautify;
+</%args>
+<%pre>
+
+#include "wettkampfmanager.h"
+#include <cxxtools/json.h>
+
+</%pre>
+<%cpp>
+
+WettkampfManager wettkampfManager(ctx);
+
+auto wettkaempfe = wettkampfManager.getWettkaempfe(veranstaltung.vid);
+
+reply.setContentType("application/json");
+reply.out() << cxxtools::Json(wettkaempfe).beautify(beautify);
+
+</%cpp>

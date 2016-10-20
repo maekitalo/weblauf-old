@@ -71,16 +71,9 @@ int main(int argc, char* argv[])
     // do not have the html frame.
     app.mapUrl("^/(.*)\\.(.*)$", "$2/$1");
 
-    app.mapUrl("\\.js$", "empty@tntnet")
-       .setArg("Content-Type", "application/javascript");
-    app.mapUrl("\\.css$", "empty@tntnet")
-       .setArg("Content-Type", "text/css");
-
     // View
-    app.mapUrl("^/$", "webmain")  // index page
-       .setArg("next", "index");
-    app.mapUrl("^/(.*)$", "webmain")
-       .setArg("next", "$1");
+    app.mapUrl("^/$", "webmain");  // index page
+    app.mapUrl("^/(.*)$", "view/$1");
 
     app.run();
   }

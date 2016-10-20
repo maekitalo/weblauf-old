@@ -3,9 +3,8 @@
  *
  */
 
-#include <iostream>
-
 #include "teilnehmermanager.h"
+#include <managercontextimpl.h>
 
 #include <tntdb/statement.h>
 #include <tntdb/row.h>
@@ -26,7 +25,7 @@ std::vector<Person> TeilnehmerManager::searchPerson(unsigned vid, const std::str
     {
         log_debug("suche nach Startnummer <" << s << '>');
 
-        sel = _conn.prepareCached(R"SQL(
+        sel = _ctx.impl().conn().prepareCached(R"SQL(
             select per_pid, per_nachname, per_vorname, per_verein, per_geschlecht,
                    per_jahrgang, per_strasse, per_plz, per_ort, per_land,
                    per_nationalitaet
@@ -46,7 +45,7 @@ std::vector<Person> TeilnehmerManager::searchPerson(unsigned vid, const std::str
     {
         log_debug("suche nach Name <" << s << '>');
 
-        sel = _conn.prepareCached(R"SQL(
+        sel = _ctx.impl().conn().prepareCached(R"SQL(
             select per_pid, per_nachname, per_vorname, per_verein, per_geschlecht,
                    per_jahrgang, per_strasse, per_plz, per_ort, per_land,
                    per_nationalitaet

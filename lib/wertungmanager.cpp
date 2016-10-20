@@ -5,19 +5,21 @@
 
 #include "wertungmanager.h"
 
+#include <managercontextimpl.h>
+
 #include <tntdb/connection.h>
 #include <tntdb/statement.h>
 #include <tntdb/row.h>
 
 #include <cxxtools/log.h>
 
-log_define("weblauf.wertung.manager");
+log_define("weblauf.wertung.manager")
 
 Wertung WertungManager::getWertung(unsigned vid, unsigned wid, unsigned rid)
 {
     log_debug("getWertung(" << vid << ", " << wid << ", " << rid << ')');
 
-    tntdb::Statement st = _conn.prepareCached(R"SQL(
+    tntdb::Statement st = _ctx.impl().conn().prepareCached(R"SQL(
         select wer_rid, wer_name, wer_abhaengig, wer_urkunde, wer_preis
           from wertung
          where wer_vid = :vid
@@ -46,7 +48,7 @@ std::vector<Wertung> WertungManager::getWertungen(unsigned vid, unsigned wid)
 {
     log_debug("getWertungen(" << vid << ", " << wid << ')');
 
-    tntdb::Statement st = _conn.prepareCached(R"SQL(
+    tntdb::Statement st = _ctx.impl().conn().prepareCached(R"SQL(
         select w.wer_rid, w.wer_name, a.wer_name, w.wer_urkunde, w.wer_preis
           from wertung w
           left outer join wertung a
@@ -87,7 +89,7 @@ Wertungsgruppe WertungManager::getWertungsgruppe(unsigned vid, unsigned wid, uns
 
     Wertungsgruppe wertungsgruppe;
 
-    tntdb::Statement st = _conn.prepareCached(R"SQL(
+    tntdb::Statement st = _ctx.impl().conn().prepareCached(R"SQL(
         select wgr_name, wgw_rid
           from wgruppe
           left outer join wgruppewer
@@ -124,7 +126,7 @@ std::vector<Wertungsgruppe> WertungManager::getWertungsgruppen(unsigned vid, uns
 
     std::vector<Wertungsgruppe> wertungsgruppen;
 
-    tntdb::Statement st = _conn.prepareCached(R"SQL(
+    tntdb::Statement st = _ctx.impl().conn().prepareCached(R"SQL(
         select wgr_gid, wgr_name, wgw_rid
           from wgruppe
           left outer join wgruppewer

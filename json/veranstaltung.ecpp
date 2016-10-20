@@ -1,0 +1,21 @@
+<%include>session.ecpp</%include>
+<%args>
+bool beautify;
+</%args>
+<%pre>
+
+#include "veranstaltungmanager.h"
+#include <cxxtools/json.h>
+
+</%pre>
+<%cpp>
+
+VeranstaltungManager veranstaltungManager(ctx);
+auto veranstaltungen = veranstaltungManager.getVeranstaltungen();
+
+log_debug(veranstaltungen.size() << " Veranstaltungen gelesen");
+
+reply.setContentType("application/json");
+reply.out() << cxxtools::Json(veranstaltungen).beautify(beautify);
+
+</%cpp>

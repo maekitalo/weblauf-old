@@ -1,5 +1,28 @@
-<%include>model/wertung.ecpp</%include>
 <%include>session.ecpp</%include>
+<%pre>
+
+#include "wettkampfmanager.h"
+#include "wertungmanager.h"
+
+</%pre>
+<%args>
+unsigned setwid = 0;
+</%args>
+<%cpp>
+
+WettkampfManager wettkampfManager(ctx);
+auto wettkaempfe = wettkampfManager.getWettkaempfe(veranstaltung.vid);
+
+if (setwid != 0)
+{
+    wettkampf = wettkampfManager.getWettkampf(veranstaltung.vid, setwid);
+    wertung = Wertung();
+}
+
+WertungManager wertungManager(ctx);
+auto wertungen = wertungManager.getWertungen(wettkampf.vid, wettkampf.wid);
+
+</%cpp>
 <h1>Wertung</h1>
 
 <form method="post">

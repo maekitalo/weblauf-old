@@ -2,7 +2,8 @@
 
 #include "configuration.h"
 #include "wertungmanager.h"
-#include <tntdb/connect.h>
+#include <managercontext.h>
+#include <managercontextimpl.h>
 
 </%pre>
 <%include>session.ecpp</%include>
@@ -11,8 +12,7 @@ unsigned rid;
 </%args>
 <%cpp>
 
-tntdb::Connection conn = tntdb::connectCached(configuration.dburl());
-WertungManager wertungManager(conn);
+WertungManager wertungManager(ctx);
 wertung = wertungManager.getWertung(wettkampf.vid, wettkampf.wid, rid);
 
 log_info("wertung vid=" << wertung.vid << " wid=" << wertung.wid << " rid=" << wertung.rid << ": " << wertung.name);

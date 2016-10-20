@@ -3,7 +3,8 @@
 #include "configuration.h"
 #include "wettkampfmanager.h"
 
-#include <tntdb/connect.h>
+#include <managercontext.h>
+#include <managercontextimpl.h>
 
 </%pre>
 <%include>session.ecpp</%include>
@@ -14,8 +15,7 @@ unsigned wid;
 
 wertung = Wertung();
 
-tntdb::Connection conn = tntdb::connectCached(configuration.dburl());
-WettkampfManager wettkampfManager(conn);
+WettkampfManager wettkampfManager(ctx);
 
 wettkampf = wettkampfManager.getWettkampf(veranstaltung.vid, wid);
 

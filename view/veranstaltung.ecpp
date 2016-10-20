@@ -1,11 +1,8 @@
-<%include>model/veranstaltung.ecpp</%include>
-<%include>session.ecpp</%include>
 <h1>Veranstaltung</h1>
 
 <table class="datatable compact row-border stripe" id="veranstaltungen">
   <thead>
     <tr>
-      <th></th>
       <th>Nr</th>
       <th>Datum</th>
       <th>Name</th>
@@ -13,18 +10,6 @@
       <th>Logo</th>
     </tr>
   </thead>
-  <tbody>
-% for (const auto& v: veranstaltungen) {
-    <tr>
-      <td><input type="radio" name="vid" value="<$ v.vid $>"<? veranstaltung.vid == v.vid ? " checked"?>></td>
-      <td><$ v.vid $></td>
-      <td><$ v.datum.toString("%d.%m.%Y") $></td>
-      <td><$ v.name $></td>
-      <td><$ v.ort $></td>
-      <td><$ v.logo $></td>
-    </tr>
-% }
-  </tbody>
 </table>
 
 <div id="dialog" style="display:none"></div>

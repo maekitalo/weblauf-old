@@ -1,4 +1,4 @@
-ACLOCAL_AMFLAGS = -I m4 --install
+ACLOCAL_AMFLAGS = -I m4
 AUTOMAKE_OPTIONS = subdir-objects
 AM_CPPFLAGS = -I$(top_srcdir)/include
 
@@ -7,6 +7,7 @@ bin_PROGRAMS = weblauf
 lib_LTLIBRARIES = libweblauf.la
 
 libweblauf_la_SOURCES = \
+	lib/managercontext.cpp \
 	lib/person.cpp \
 	lib/teilnehmermanager.cpp \
 	lib/veranstaltung.cpp \
@@ -30,26 +31,21 @@ include_HEADERS = \
 	include/wertungmanager.h
 
 noinst_HEADERS = \
-	model/index.ecpp \
-	model/teilnehmer.ecpp \
-	model/veranstaltung.ecpp \
 	session.ecpp
 
 ecppSources = \
 	actionmain.ecpp \
+	action/setveranstaltung.ecpp \
 	action/setwertung.ecpp \
 	action/setwettkampf.ecpp \
 	action/veranstaltung/del.ecpp \
 	action/veranstaltung/save.ecpp \
 	controller/index.ecpp \
-	controller/veranstaltung.ecpp \
-	controller/wettkampf.ecpp \
-	controller/wertung.ecpp \
-	controller/wgruppe.ecpp \
 	html/personen.ecpp \
 	html/veranstaltung.ecpp \
 	html/wettkampf.ecpp \
-	json/setveranstaltung.ecpp \
+	json/veranstaltung.ecpp \
+	json/wettkampf.ecpp \
 	view/index.ecpp \
 	view/teilnehmer.ecpp \
 	view/veranstaltung.ecpp \
@@ -65,8 +61,6 @@ staticSources = \
 	resources/images/sort_both.png \
 	resources/jquery-2.1.4.min.js \
 	resources/jquery-2.1.4.js \
-	resources/jquery.dataTables.min.js \
-	resources/jquery.dataTables.min.css \
 	resources/jquery-ui-1.11.4.custom/jquery-ui.js \
 	resources/jquery-ui-1.11.4.custom/jquery-ui.theme.css \
 	resources/jquery-ui-1.11.4.custom/jquery-ui.css \
@@ -109,6 +103,7 @@ staticSources = \
 	resources/js/noty/themes/bootstrap.js \
 	resources/js/noty/themes/relax.js \
 	resources/js/noty/themes/default.js \
+	resources/js/tntnet.js \
 	resources/teilnehmer.js \
 	resources/veranstaltung.js \
 	resources/weblauf.css \
@@ -117,8 +112,8 @@ staticSources = \
 	resources/weblauf.js
 
 weblauf_SOURCES = \
-	main.cpp \
 	configuration.cpp \
+	main.cpp \
 	$(ecppSources)
 
 nodist_weblauf_SOURCES = \

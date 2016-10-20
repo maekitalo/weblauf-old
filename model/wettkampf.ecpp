@@ -1,5 +1,0 @@
-<%request include="wettkampf.h">
-
-std::vector<Wettkampf> wettkaempfe;
-
-</%request>

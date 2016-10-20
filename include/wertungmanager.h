@@ -8,17 +8,15 @@
 
 #include "wertung.h"
 #include "wertungsgruppe.h"
-
-#include <tntdb/connection.h>
-
+#include <managercontext.h>
 #include <vector>
 
 class WertungManager
 {
     public:
-        WertungManager(tntdb::Connection conn)
-            : _conn(conn)
-        { }
+        explicit WertungManager(ManagerContext& ctx)
+            : _ctx(ctx)
+            { }
 
         Wertung getWertung(unsigned vid, unsigned wid, unsigned rid);
         std::vector<Wertung> getWertungen(unsigned vid, unsigned wid);
@@ -27,8 +25,7 @@ class WertungManager
         std::vector<Wertungsgruppe> getWertungsgruppen(unsigned vid, unsigned wid);
 
     private:
-        tntdb::Connection _conn;
+        ManagerContext& _ctx;
 };
 
 #endif // WERTUNGMANAGER_H
-

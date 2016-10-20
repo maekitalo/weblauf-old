@@ -3,21 +3,21 @@
 
 #include "person.h"
 
-#include <tntdb/connection.h>
+#include <managercontext.h>
 
 #include <vector>
 
 class TeilnehmerManager
 {
     public:
-        explicit TeilnehmerManager(tntdb::Connection conn)
-            : _conn(conn)
+        explicit TeilnehmerManager(ManagerContext& ctx)
+            : _ctx(ctx)
         { }
 
         std::vector<Person> searchPerson(unsigned vid, const std::string& s);
 
     private:
-        tntdb::Connection _conn;
+        ManagerContext& _ctx;
 };
 
 #endif

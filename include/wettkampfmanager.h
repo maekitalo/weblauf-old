@@ -8,23 +8,22 @@
 
 #include "wettkampf.h"
 
-#include <tntdb/connection.h>
+#include <managercontext.h>
 
 #include <vector>
 
 class WettkampfManager
 {
     public:
-        WettkampfManager(tntdb::Connection conn)
-            : _conn(conn)
-        { }
+        explicit WettkampfManager(ManagerContext& ctx)
+            : _ctx(ctx)
+            { }
 
         Wettkampf getWettkampf(unsigned vid, unsigned wid);
         std::vector<Wettkampf> getWettkaempfe(unsigned vid);
 
     private:
-        tntdb::Connection _conn;
+        ManagerContext& _ctx;
 };
 
 #endif // WETTKAMPFMANAGER_H
-

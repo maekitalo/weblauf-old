@@ -1,11 +1,21 @@
-<%include>model/wettkampf.ecpp</%include>
 <%include>session.ecpp</%include>
+<%pre>
+
+#include "wettkampfmanager.h"
+
+</%pre>
+<%cpp>
+
+WettkampfManager wettkampfManager(ctx);
+
+auto wettkaempfe = wettkampfManager.getWettkaempfe(veranstaltung.vid);
+
+</%cpp>
 <h1>Wettkampf</h1>
 
 <table class="datatable compact row-border stripe" id="wettkaempfe">
   <thead>
     <tr>
-      <th></th>
       <th>Nr</th>
       <th>Name</th>
       <th>Art</th>
@@ -14,19 +24,6 @@
       <th>Startzeit</th>
     </tr>
   </thead>
-  <tbody>
-% for (const auto& w: wettkaempfe) {
-    <tr>
-      <td><input type="radio" name="wid" value="<$ w.wid $>"<? wettkampf.wid == w.wid ? " checked"?>></td>
-      <td><$ w.wid $></td>
-      <td><$ w.name $></td>
-      <td><$ w.art $></td>
-      <td><$ w.staVon $></td>
-      <td><$ w.staBis $></td>
-      <td><$ w.startzeit.toString() $></td>
-    </tr>
-% }
-  </tbody>
 </table>
 
 <div id="dialog" style="display:none"></div>

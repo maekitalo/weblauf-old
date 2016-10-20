@@ -4,10 +4,7 @@ search;
 <%include>session.ecpp</%include>
 <%pre>
 
-#include "configuration.h"
 #include "teilnehmermanager.h"
-
-#include <tntdb/connect.h>
 
 </%pre>
 <%cpp>
@@ -15,9 +12,7 @@ search;
 if (search.empty())
     return HTTP_NOT_FOUND;
 
-tntdb::Connection conn = tntdb::connectCached(configuration.dburl());
-
-TeilnehmerManager tm(conn);
+TeilnehmerManager tm(ctx);
 
 auto personen = tm.searchPerson(veranstaltung.vid, search);
 

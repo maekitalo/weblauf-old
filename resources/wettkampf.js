@@ -7,45 +7,49 @@ $(function() {
     });
 
     $('#wettkaempfe').DataTable({
-      "order": [1, 'asc'],
-      "columns": [
-        { "orderable": false },
-        null, // id
-        null, // name
-        null, // art
-        null, // Startnummer von
-        null, // Startnummer bis
-        null  // Startzeit
+      ajax: {
+          url: 'wettkampf.json',
+          dataSrc: ''
+      },
+      order: [0, 'asc'],
+      select: true,
+      columns: [
+          { data: 'wid' },
+          { data: 'name' },
+          { data: 'art' },
+          { data: 'staVon' },
+          { data: 'staBis' },
+          { data: 'startzeit' }
       ]
     });
 
     var initdialog = function() {
-            $('label').css('width', '100px');
-            var dialog = $(this).dialog({
-              height: 300,
-              width: 400,
-              modal: true,
-              buttons: {
-                "Speichern": function() {
-                  action('wettkampf/save', {
-                      vid: $('#vid').val(),
-                      name: $('#name').val(),
-                      ort: $('#ort').val(),
-                      datum: $('#datum').val()
-                  },
-                  function () {
-                      information("Wettkampf gespeichert");
-                      dialog.dialog("close");
-                      reload();
-                  })
-                },
-                "Abbrechen": function() {
+        $('label').css('width', '100px');
+        var dialog = $(this).dialog({
+          height: 300,
+          width: 400,
+          modal: true,
+          buttons: {
+            "Speichern": function() {
+              action('wettkampf/save', {
+                  vid: $('#vid').val(),
+                  name: $('#name').val(),
+                  ort: $('#ort').val(),
+                  datum: $('#datum').val()
+              },
+              function () {
+                  information("Wettkampf gespeichert");
                   dialog.dialog("close");
-                }
-              }
-            });
-            $('.datum').datepicker();
-          };
+                  reload();
+              })
+            },
+            "Abbrechen": function() {
+              dialog.dialog("close");
+            }
+          }
+        });
+        $('.datum').datepicker();
+    };
 
     $('#neu').click(function() {
       $('#dialog')
